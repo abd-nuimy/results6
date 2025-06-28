@@ -600,51 +600,53 @@ font-family: "Noto Kufi Arabic", sans-serif;        }
             }
             
             // Function to extract subjects from API data and sort them
-            function extractAndSortSubjects(data) {
-                const subjects = [];
-                const passingGrade = 50; // درجة النجاح
-                
-                // ترتيب المواد حسب الأهمية
-                const subjectOrder = [
-                    'الاسلامية / العربية',
-                    'الانكليزية',
-                    'الرياضيات',
-                    'الاجتماعيات',
-                    'الاحياء',
-                    'الكيمياء',
-                    'الفيزياء'
-                ];
-                
-                // إنشاء خريطة للمواد لضمان عدم التكرار
-                const subjectMap = {};
-                
-                for (let i = 1; i <= 9; i++) {
-                    const subName = data[`subnamE${i}`];
-                    const subGrade = parseInt(data[`suB${i}`]) || 0;
-                    const subMax = parseInt(data[`csuB${i}`]) || 100;
-                    
-                    if (subName && subMax !== -1) {
-                        // تجنب التكرار
-                        if (!subjectMap[subName]) {
-                            subjectMap[subName] = {
-                                name: subName,
-                                grade: subGrade,
-                                max: subMax,
-                                passed: subGrade >= passingGrade
-                            };
-                        }
-                    }
-                }
-                
-                // تحويل الخريطة إلى مصفوفة وترتيبها
-                for (const subjectName of subjectOrder) {
-                    if (subjectMap[subjectName]) {
-                        subjects.push(subjectMap[subjectName]);
-                    }
-                }
-                
-                return subjects;
+function extractAndSortSubjects(data) {
+    const subjects = [];
+    const passingGrade = 50;
+
+    const subjectOrder = [
+        'الاسلامية / العربية',
+        'الانكليزية',
+        'الرياضيات',
+        'الاجتماعيات',
+        'الاحياء',
+        'الكيمياء',
+        'الفيزياء'
+    ];
+
+    const subjectMap = {};
+
+    for (let i = 1; i <= 9; i++) {
+        const subName = data[`subnamE${i}`];
+        const subGradeRaw = data[`suB${i}`];
+        const subMax = parseInt(data[`csuB${i}`]);
+
+        if (subName && subGradeRaw !== undefined && subGradeRaw !== "" && subMax !== -1) {
+            if (!subjectMap[subName]) {
+                // نحافظ على قيمة الدرجة كـ string
+                const numericPart = parseInt(subGradeRaw.replace("%", "")) || 0;
+                const passed = numericPart >= passingGrade;
+
+                subjectMap[subName] = {
+                    name: subName,
+                    grade: subGradeRaw, // تبقى كما هي حتى لو فيها %
+                    max: subMax,
+                    passed: passed
+                };
             }
+        }
+    }
+
+    const result = [];
+    for (const subjectName of subjectOrder) {
+        if (subjectMap[subjectName]) {
+            result.push(subjectMap[subjectName]);
+        }
+    }
+
+    return result;
+}
+
             
             // Function to fetch and display results
             async function fetchResults(examNumber) {
