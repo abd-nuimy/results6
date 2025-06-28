@@ -60,26 +60,25 @@ font-family: "Noto Kufi Arabic", sans-serif;        }
             opacity: 0.9;
         }
         
- .logo {
-    position: absolute;
-    top: 15px;
-    
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    width: 70px;
-    height: 70px;
-    background-color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-    background-image: url(logo.gif);
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+        .logo {
+            position: fixed; /* أو absolute حسب السياق */
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 70px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            background-image: url(logo.gif);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1000;
+        }
 
         
         .input-section {
