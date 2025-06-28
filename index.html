@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نتائج السادس الإعدادي 2024/2025 - وزارة التربية</title>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@200..800&family=El+Messiri:wght@400..700&family=Noto+Kufi+Arabic:wght@100..900&family=Readex+Pro:wght@160..700&family=Tajawal:wght@200;300;400;500;700;800;900&family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap');
+* {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+font-family: "Noto Kufi Arabic", sans-serif;        }
         
         body {
+            font-family: "Noto Kufi Arabic", sans-serif;
             background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -47,6 +49,7 @@
         }
         
         .header h1 {
+            margin-top: 60px;
             font-size: 1.8rem;
             margin-bottom: 8px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -57,23 +60,27 @@
             opacity: 0.9;
         }
         
-        .logo {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            width: 50px;
-            height: 50px;
-            background-color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-            background-image: url('logo.gif');
-            background-size: 80%;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+ .logo {
+    position: absolute;
+    top: 15px;
+    
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 70px;
+    height: 70px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    background-image: url(logo.gif);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
         
         .input-section {
             padding: 15px;
@@ -112,7 +119,7 @@
         
         .btn {
             display: inline-block;
-            padding: 8px 20px;
+            padding: 10px 25px;
             margin: 12px 4px;
             background: linear-gradient(to right, #1a2a6c, #004e92);
             color: white;
@@ -123,6 +130,7 @@
             transition: all 0.2s ease;
             font-weight: bold;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            min-width: 120px;
         }
         
         .btn:hover {
@@ -135,6 +143,11 @@
             transform: translateY(1px);
         }
         
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
         .result-section {
             display: none;
             padding: 15px;
@@ -142,7 +155,7 @@
         }
         
         .result-card {
-            background: linear-gradient(to bottom right, #ffffff, #f0f4ff);
+            background: white;
             border-radius: 8px;
             padding: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -256,9 +269,50 @@
             background-color: #1a2a6c;
             color: white;
             text-align: center;
-            padding: 12px;
+            padding: 20px 15px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: px;
+        }
+
+        .social-icon {
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            opacity: 0.9;
+        }
+
+        .footer-text {
+            line-height: 1.6;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            margin-top: 15px;
+        }
+
+        .developer {
             font-size: 0.85rem;
-            margin-top: 12px;
+            margin-top: px;
+            color: rgba(255, 255, 255, 0.9);
         }
         
         .loading {
@@ -354,6 +408,14 @@
             .grades-table {
                 font-size: 0.8rem;
             }
+            
+            .social-icons {
+                gap: 15px;
+            }
+            
+            .social-icon {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -362,6 +424,7 @@
         <div class="header">
             <div class="logo"></div>
             <h1>نتائج السادس الإعدادي</h1>
+            <h2>العلمي / الإدبي</h2>
             <p>للعام الدراسي 2024 / 2025</p>
         </div>
         
@@ -436,9 +499,29 @@
         </div>
         
         <div class="footer">
-            مبرمج ومصمم الموقع عبدالخالق النعيمي
-            وزارة التربية - جمهورية العراق
-            <p>جميع الحقوق محفوظة © 2025</p>
+            <div class="footer-content">
+                <div class="social-icons">
+                    <a href="https://t.me/abd0xsec" class="social-icon" target="_blank" title="تلجرام">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://facebook.com/share/1B752vXaj3" class="social-icon" target="_blank" title="فيسبوك">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+                <div class="developer">
+                    مبرمج ومصمم الموقع: عبدالخالق النعيمي
+                </div>
+                <br>
+                <div class="footer-text">
+                    <p>وزارة التربية - جمهورية العراق</p>
+                    <p>نظام نتائج السادس الإعدادي 2024/2025</p>
+                </div>
+                
+                
+                <div class="copyright">
+                    جميع الحقوق محفوظة © 2025
+                </div>
+            </div>
         </div>
     </div>
 
@@ -659,20 +742,63 @@
                 fetchResults(examNumber);
             });
             
-            // Event listener for download button
-            downloadBtn.addEventListener('click', function() {
-                showLoading();
+            // Event listener for download button - نسخة محسنة
+            downloadBtn.addEventListener('click', async function() {
+                const originalText = downloadBtn.innerHTML;
+                downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحميل...';
+                downloadBtn.disabled = true;
                 
-                // Use html2canvas to capture the result card as an image
-                setTimeout(function() {
-                    html2canvas(resultCard).then(canvas => {
-                        const link = document.createElement('a');
-                        link.download = `result-${examNumberInput.value.trim()}.png`;
-                        link.href = canvas.toDataURL('image/png');
-                        link.click();
-                        hideLoading();
+                try {
+                    // إعطاء الوقت لعرض رسالة التحميل
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    
+                    // استخدام html2canvas مع خيارات محسنة
+                    const canvas = await html2canvas(resultCard, {
+                        scale: 2,
+                        logging: false,
+                        useCORS: true,
+                        allowTaint: true,
+                        backgroundColor: '#ffffff',
+                        scrollX: 0,
+                        scrollY: 0,
+                        windowWidth: resultCard.scrollWidth,
+                        windowHeight: resultCard.scrollHeight
                     });
-                }, 300);
+                    
+                    // إنشاء رابط التحميل
+                    const link = document.createElement('a');
+                    const fileName = `نتيجة_${examNumberInput.value.trim()}_${Date.now()}.png`;
+                    link.download = fileName;
+                    link.href = canvas.toDataURL('image/png');
+                    
+                    // إضافة الرابط إلى DOM ونشره ثم إزالته
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    // تأخير بسيط لإظهار رسالة النجاح
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    alert('تم حفظ الصورة بنجاح. سيتم تنزيلها تلقائياً.');
+                    
+                } catch (err) {
+                    console.error('Error generating image:', err);
+                    
+                    // محاولة استخدام طريقة بديلة
+                    try {
+                        const imgData = resultCard.innerHTML;
+                        const win = window.open('', '_blank');
+                        win.document.write('<div dir="rtl" style="padding:20px;text-align:center">' + imgData + '</div>');
+                        win.document.close();
+                        alert('تم فتح النتيجة في نافذة جديدة، يمكنك أخذ لقطة شاشة يدوية');
+                    } catch (e) {
+                        console.error('Fallback failed:', e);
+                        alert('حدث خطأ أثناء حفظ الصورة. يرجى المحاولة مرة أخرى أو استخدام لقطة الشاشة اليدوية.');
+                    }
+                } finally {
+                    // استعادة حالة الزر الأصلية
+                    downloadBtn.innerHTML = originalText;
+                    downloadBtn.disabled = false;
+                }
             });
             
             // Event listener for new search button
