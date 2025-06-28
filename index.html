@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتائج السادس الإعدادي 2024/2025 - وزارة التربية</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #1a2a6c, #004e92);
+            color: white;
+            padding: 25px 15px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .logo {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            background-image: url('logo.gif');
+            background-size: 80%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .input-section {
+            padding: 15px;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        
+        .input-group {
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1rem;
+            color: #1a2a6c;
+            font-weight: bold;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #1a2a6c;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+        
+        .input-group input:focus {
+            border-color: #004e92;
+            box-shadow: 0 0 6px rgba(0, 78, 146, 0.4);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            margin: 12px 4px;
+            background: linear-gradient(to right, #1a2a6c, #004e92);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: bold;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(to right, #004e92, #1a2a6c);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .result-section {
+            display: none;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .result-card {
+            background: linear-gradient(to bottom right, #ffffff, #f0f4ff);
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #1a2a6c, #004e92);
+        }
+        
+        .student-info {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        
+        .student-info h2 {
+            color: #1a2a6c;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 8px;
+            text-align: right;
+        }
+        
+        .info-item {
+            background-color: #f0f4ff;
+            padding: 6px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+        }
+        
+        .info-item strong {
+            display: block;
+            color: #1a2a6c;
+            margin-bottom: 2px;
+            font-size: 0.9rem;
+        }
+        
+        .grades-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 0.85rem;
+        }
+        
+        .grades-table th {
+            background: linear-gradient(to right, #1a2a6c, #004e92);
+            color: white;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        .grades-table td {
+            padding: 8px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .grades-table tr.failed {
+            background-color: rgba(255, 0, 0, 0.08);
+        }
+        
+        .grades-table tr:nth-child(even):not(.failed) {
+            background-color: #f8f9fa;
+        }
+        
+        .grades-table tr:hover {
+            background-color: #e9ecef;
+        }
+        
+        .summary {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .summary-item {
+            background: linear-gradient(to right, #1a2a6c, #004e92);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+            min-width: 100px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            font-size: 0.85rem;
+        }
+        
+        .summary-item span {
+            font-size: 1.3rem;
+            display: block;
+            margin-top: 4px;
+        }
+        
+        .footer {
+            background-color: #1a2a6c;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 0.85rem;
+            margin-top: 12px;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 15px;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #1a2a6c;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error {
+            display: none;
+            background-color: #ffebee;
+            color: #c62828;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 12px auto;
+            max-width: 450px;
+            text-align: center;
+            border-left: 3px solid #c62828;
+            font-size: 0.85rem;
+        }
+        
+        /* Animations */
+        .confetti {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background-color: #f00;
+            opacity: 0;
+            animation: confetti 4s ease-in-out;
+            z-index: 1000;
+        }
+        
+        @keyframes confetti {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        .sad-face {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 70px;
+            opacity: 0;
+            animation: fadeInOut 2.5s ease-in-out;
+            z-index: 1000;
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+            20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        }
+        
+        @media (max-width: 500px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo {
+                width: 45px;
+                height: 45px;
+                top: 12px;
+                left: 12px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .summary {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .grades-table {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo"></div>
+            <h1>نتائج السادس الإعدادي</h1>
+            <p>للعام الدراسي 2024 / 2025</p>
+        </div>
+        
+        <div class="input-section">
+            <div class="input-group">
+                <label for="exam-number">الرجاء إدخال الرقم الامتحاني</label>
+                <input type="text" id="exam-number" placeholder="مثال: 172591312410001">
+            </div>
+            <button class="btn" id="show-result">عرض النتيجة</button>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>جاري تحميل النتيجة، الرجاء الانتظار...</p>
+        </div>
+        
+        <div class="error" id="error-message">
+            <p>حدث خطأ أثناء جلب البيانات. الرجاء التأكد من الرقم الامتحاني والمحاولة مرة أخرى.</p>
+        </div>
+        
+        <div class="result-section" id="result-section">
+            <div class="result-card" id="result-card">
+                <div class="student-info">
+                    <h2>بيانات الطالب</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <strong>الاسم الكامل</strong>
+                            <span id="student-name">-</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>المحافظة</strong>
+                            <span id="student-province">-</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>المدرسة</strong>
+                            <span id="student-school">-</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>الحالة</strong>
+                            <span id="student-status">-</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2>الدرجات</h2>
+                <table class="grades-table" id="grades-table">
+                    <thead>
+                        <tr>
+                            <th>المادة</th>
+                            <th>الدرجة</th>
+                        </tr>
+                    </thead>
+                    <tbody id="grades-body">
+                        <!-- سيتم ملؤه بالبيانات من API -->
+                    </tbody>
+                </table>
+                
+                <div class="summary">
+                    <div class="summary-item">
+                        المعدل
+                        <span id="average">-</span>
+                    </div>
+                    <div class="summary-item">
+                        المجموع
+                        <span id="total">-</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn" id="download-result">تحميل النتيجة كصورة</button>
+            <button class="btn" id="new-search">بحث جديد</button>
+        </div>
+        
+        <div class="footer">
+            مبرمج ومصمم الموقع عبدالخالق النعيمي
+            وزارة التربية - جمهورية العراق
+            <p>جميع الحقوق محفوظة © 2025</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const examNumberInput = document.getElementById('exam-number');
+            const showResultBtn = document.getElementById('show-result');
+            const resultSection = document.getElementById('result-section');
+            const loading = document.getElementById('loading');
+            const errorMessage = document.getElementById('error-message');
+            const downloadBtn = document.getElementById('download-result');
+            const newSearchBtn = document.getElementById('new-search');
+            const resultCard = document.getElementById('result-card');
+            
+            // عناصر عرض البيانات
+            const studentName = document.getElementById('student-name');
+            const studentProvince = document.getElementById('student-province');
+            const studentSchool = document.getElementById('student-school');
+            const studentStatus = document.getElementById('student-status');
+            const gradesBody = document.getElementById('grades-body');
+            const averageSpan = document.getElementById('average');
+            const totalSpan = document.getElementById('total');
+            
+            // Function to show loading state
+            function showLoading() {
+                loading.style.display = 'block';
+                errorMessage.style.display = 'none';
+                resultSection.style.display = 'none';
+            }
+            
+            // Function to hide loading state
+            function hideLoading() {
+                loading.style.display = 'none';
+            }
+            
+            // Function to show error message
+            function showError(message = 'حدث خطأ أثناء جلب البيانات. الرجاء التأكد من الرقم الامتحاني والمحاولة مرة أخرى.') {
+                errorMessage.innerHTML = `<p>${message}</p>`;
+                errorMessage.style.display = 'block';
+                hideLoading();
+            }
+            
+            // Function to show result
+            function showResult() {
+                resultSection.style.display = 'block';
+                hideLoading();
+                
+                // Scroll to result
+                resultSection.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Function to create confetti effect
+            function createConfetti() {
+                const colors = ['#f00', '#0f0', '#00f', '#ff0', '#f0f', '#0ff'];
+                for (let i = 0; i < 80; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = -10 + 'px';
+                    confetti.style.width = Math.random() * 8 + 4 + 'px';
+                    confetti.style.height = Math.random() * 8 + 4 + 'px';
+                    confetti.style.animationDuration = Math.random() * 2 + 1.5 + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 4000);
+                }
+            }
+            
+            // Function to show sad face
+            function showSadFace() {
+                const sadFace = document.createElement('div');
+                sadFace.className = 'sad-face';
+                sadFace.innerHTML = '😞';
+                document.body.appendChild(sadFace);
+                
+                setTimeout(() => {
+                    sadFace.remove();
+                }, 2500);
+            }
+            
+            // Function to extract subjects from API data and sort them
+            function extractAndSortSubjects(data) {
+                const subjects = [];
+                const passingGrade = 50; // درجة النجاح
+                
+                // ترتيب المواد حسب الأهمية
+                const subjectOrder = [
+                    'الاسلامية / العربية',
+                    'الانكليزية',
+                    'الرياضيات',
+                    'الاجتماعيات',
+                    'الاحياء',
+                    'الكيمياء',
+                    'الفيزياء'
+                ];
+                
+                // إنشاء خريطة للمواد لضمان عدم التكرار
+                const subjectMap = {};
+                
+                for (let i = 1; i <= 9; i++) {
+                    const subName = data[`subnamE${i}`];
+                    const subGrade = parseInt(data[`suB${i}`]) || 0;
+                    const subMax = parseInt(data[`csuB${i}`]) || 100;
+                    
+                    if (subName && subMax !== -1) {
+                        // تجنب التكرار
+                        if (!subjectMap[subName]) {
+                            subjectMap[subName] = {
+                                name: subName,
+                                grade: subGrade,
+                                max: subMax,
+                                passed: subGrade >= passingGrade
+                            };
+                        }
+                    }
+                }
+                
+                // تحويل الخريطة إلى مصفوفة وترتيبها
+                for (const subjectName of subjectOrder) {
+                    if (subjectMap[subjectName]) {
+                        subjects.push(subjectMap[subjectName]);
+                    }
+                }
+                
+                return subjects;
+            }
+            
+            // Function to fetch and display results
+            async function fetchResults(examNumber) {
+                showLoading();
+                
+                try {
+                    // إضافة timestamp لمنع caching غير المرغوب فيه
+                    const apiUrl = `https://serapi3.najah.iq/exam-result/${examNumber}?t=${Date.now()}`;
+                    
+                    // استخدم fetch مع await للحصول على أسرع استجابة ممكنة
+                    const response = await fetch(apiUrl);
+                    
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    
+                    const data = await response.json();
+                    
+                    // Check if data exists
+                    if (!data || !data.aname) {
+                        throw new Error('لا توجد بيانات لهذا الرقم الامتحاني');
+                    }
+                    
+                    // معالجة البيانات وعرضها فوراً
+                    processAndDisplayResults(data);
+                } catch (error) {
+                    console.error('Error fetching results:', error);
+                    showError(error.message || 'حدث خطأ أثناء جلب البيانات. الرجاء المحاولة مرة أخرى.');
+                }
+            }
+            
+            // Function to process and display results
+            function processAndDisplayResults(data) {
+                // Fill student info
+                studentName.textContent = data.aname || '-';
+                studentProvince.textContent = data.goV_NAME || '-';
+                studentSchool.textContent = data.scH_NAME || '-';
+                studentStatus.textContent = data.stucases || '-';
+                
+                // Extract and display subjects
+                const subjects = extractAndSortSubjects(data);
+                gradesBody.innerHTML = '';
+                
+                let total = 0;
+                let maxTotal = 0;
+                
+                subjects.forEach(subject => {
+                    const row = document.createElement('tr');
+                    if (!subject.passed) {
+                        row.classList.add('failed');
+                    }
+                    row.innerHTML = `
+                        <td>${subject.name || '-'}</td>
+                        <td>${subject.grade || '0'}</td>
+                    `;
+                    gradesBody.appendChild(row);
+                    
+                    // حساب المجموع
+                    total += subject.grade;
+                    maxTotal += subject.max;
+                });
+                
+                // حساب المعدل
+                const average = data.finalrate || (maxTotal > 0 ? ((total / maxTotal) * 100).toFixed(2) : 0);
+                const finalTotal = data.finalgrd || total;
+                
+                averageSpan.textContent = `${average}%`;
+                totalSpan.textContent = finalTotal;
+                
+                showResult();
+                
+                // Show celebration or sad face based on result
+                if (data.stucases === 'ناجح') {
+                    createConfetti();
+                } else if (data.stucases === 'راسب' || data.stucases === 'مكمل') {
+                    showSadFace();
+                }
+            }
+            
+            // Event listener for show result button
+            showResultBtn.addEventListener('click', function() {
+                const examNumber = examNumberInput.value.trim();
+                
+                if (!examNumber) {
+                    alert('الرجاء إدخال الرقم الامتحاني');
+                    return;
+                }
+                
+                fetchResults(examNumber);
+            });
+            
+            // Event listener for download button
+            downloadBtn.addEventListener('click', function() {
+                showLoading();
+                
+                // Use html2canvas to capture the result card as an image
+                setTimeout(function() {
+                    html2canvas(resultCard).then(canvas => {
+                        const link = document.createElement('a');
+                        link.download = `result-${examNumberInput.value.trim()}.png`;
+                        link.href = canvas.toDataURL('image/png');
+                        link.click();
+                        hideLoading();
+                    });
+                }, 300);
+            });
+            
+            // Event listener for new search button
+            newSearchBtn.addEventListener('click', function() {
+                resultSection.style.display = 'none';
+                examNumberInput.value = '';
+                examNumberInput.focus();
+            });
+            
+            // Allow pressing Enter key to submit
+            examNumberInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    showResultBtn.click();
+                }
+            });
+            
+            // Focus on input when page loads
+            examNumberInput.focus();
+        });
+    </script>
+</body>
+</html>
